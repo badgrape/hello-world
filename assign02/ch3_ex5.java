@@ -1,4 +1,5 @@
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
@@ -7,56 +8,66 @@ import java.util.Scanner;
 
 public class ch3_ex5 {
 	
-	static Scanner console = new Scanner(System.in);
-	
 	public static void main(String[] args) throws FileNotFoundException {
 		
-		int i;
-		
-		String[] cats = {
-			"GENERAL",
-			"PREMIUM",
-			"SIDELINE",
-			"BOX"
-		};
-		
-		int[] sold = new int[cats.length];
-		
-		for (i = 0; i < cats.length; i++) {
-		
-			System.out.print("Number of " + cats[i] + " tickets sold: ");
-			sold[i] = console.nextInt();
-			
-		}
-		
-		double[] price = {25, 50, 100, 250};
-		
+		// Initialize file input and output
+		Scanner infile = new Scanner(new FileReader("ch3ex5_in.txt"));
 		PrintWriter outfile = new PrintWriter ("ch3ex5_out.txt");
 		
+		String[] cats = { // ticket categories
+			"BOX",
+			"SIDELINE",
+			"PREMIUM",
+			"GENERAL"
+		};
+		
+		double[] price = new double[cats.length]; // price for each kind of ticket
+		
+		int[] sold = new int[cats.length]; // number of each kind sold
+		
+		double[] subtotal = new double[cats.length]; // money made on each kind
+		
+		int i = 0; // initialize counter
+		
+		// Write column headings to outfile
 		outfile.printf("%-15s %-15s %-20s %s %n",
 			"TicketCategory", "TicketPrice", "NumberOfTicketsSold", "SubTotal");
 		
-		double[] subtotal = new double[cats.length];
+		while (infile.hasNextLine()) {
 		
-		for (i = 0; i < cats.length; i++) {
+			// Save infile contents to arrays
+			price[i] = infile.nextDouble();
+			sold[i] = infile.nextInt();
 			
+			// Calculate subtotals
 			subtotal[i] = price[i] * sold[i];
+			
+			// write data to outfile
 			outfile.printf("%-15s $%-14.2f %-20d $%.2f %n",
 					cats[i], price[i], sold[i], subtotal[i]);
 			
+			i++;
+			
 		}
-
-		// Calculate and print total sales for the day
+		
+		// Calculate grand totals
+		
+		double tickets = 0; // total number of tickets sold
+		double total = 0; // total revenue
+		
 		i = 0;
-		double total = 0;
 		
 		while(i < cats.length) {
+			
+			tickets += sold[i];
 			total += subtotal[i];
 			i++;
+			
 		}
+		// Write grand totals
+		outfile.printf("%-31s %-20.0f $%.2f", "Totals", tickets, total);
 		
-		outfile.printf("%-52s $%.2f", "Total", total);
-		
+		infile.close();
 		outfile.close();
 		
 	}
