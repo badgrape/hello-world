@@ -1,3 +1,6 @@
+// Number guessing game
+// Jim Morris
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
@@ -36,12 +39,15 @@ public class guess {
 				}
 				
 				// Exit loop if subsequent guess is correct
-				else {break;}
+				else {
+					break;
+				}
 			
 			}
 		}
 		
-		// Print win or lose message
+		// If first guess is not-wrong, value is sent here and loop does not run.
+		// Otherwise, when loop terminates, evaluate final guess and print win or lose message.
 		if (realnum == guessnum) {
 			System.out.println("Congratulations, you got it! :)");
 		}

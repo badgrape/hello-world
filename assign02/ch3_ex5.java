@@ -1,10 +1,10 @@
+// Chapter 3, exercise 5
+// Jim Morris
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.Scanner;
-
-// Chapter 3, exercise 5
-// Jim Morris
 
 public class ch3_ex5 {
 	

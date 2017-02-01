@@ -26,12 +26,10 @@ static Scanner console = new Scanner(System.in);
 
 			System.out.println();
 			
-			// Correct error: cost should be dividend and bagSize divisor
+			// Error corrected: cost should be dividend and bagSize should be divisor
 			System.out.printf("The cost of the fertilizer per pound is: $%.2f%n", cost / bagSize);
-			//System.out.printf("The cost of the fertilizer per pound is: $%.2f%n", bagSize / cost);
 			
-			// Correct error: cost is dividend and area divisor
+			// Error corrected: cost is dividend and area is divisor
 			System.out.printf("The cost of fertilizing per square foot is: $%.4f%n", cost / area);
-			//System.out.printf("The cost of fertilizing per square foot is: $%.4f%n", area / cost);
 	}
 }
