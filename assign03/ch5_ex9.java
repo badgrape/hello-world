@@ -8,13 +8,13 @@ public class ch5_ex9 {
 	public static Scanner console = new Scanner(System.in);
 	
 	public static void main(String[] args) {
-		
-		int i = 0; // initialize counter
-		
+				
 		// a. Prompt user to enter two integers
 		
 		int firstNum = 0;
 		int secondNum = 0;
+		
+		int i = 0; // initialize counter
 		
 		while (i < 2) {
 			
@@ -41,12 +41,11 @@ public class ch5_ex9 {
 				
 		// b. Output all odd numbers between firstNum and secondNum inclusive
 		
-		int diffNums = secondNum - firstNum; // difference between first and second numbers
+		int diffNums = secondNum - firstNum; // difference between first and second numbers; also used in c
+		
+		int currNum = 0; // current number in any iteration; also used in c
 		
 		String oddStr = ""; // string of odd numbers; used also in e
-		String evenStr = ""; // string of even numbers; used in c
-
-		int currNum = 0; // current number in any iteration
 		
 		i = 0; // reset counter
 		
@@ -55,13 +54,8 @@ public class ch5_ex9 {
 			currNum = firstNum + i;
 			
 			// Add odd numbers to string
-			if (currNum % 2 == 1) {
+			if (currNum % 2 == 1 || currNum % 2 == -1) {
 				oddStr += currNum + " ";
-			}
-			
-			// Get the set of even numbers, for c
-			if (currNum % 2 == 0) {
-				evenStr += currNum + " ";
 			}
 			
 			i++;
@@ -72,23 +66,20 @@ public class ch5_ex9 {
 				
 		// c. Output sum of all even numbers between firstNum and secondNum inclusive
 		
-		int indxSpc = 0; // index of spaces between numbers in string; also used in e
-		int pointer = 0; // beginning of substring; also used in e
-		int sum = 0; // also used in e
+		int sum = 0; // holds sum; also used in e
 		
-		while (indxSpc < evenStr.length() - 1) {
+		i = 0; // reset counter
+		
+		while (i <= diffNums) {
 			
-			// Find spaces
-			indxSpc = evenStr.indexOf(' ', indxSpc + 1);
+			currNum = firstNum + i;
 			
-			// Extract integers between spaces
-			int even = Integer.parseInt(evenStr.substring(pointer, indxSpc));
+			// Add even numbers
+			if (currNum % 2 == 0) {
+				sum += currNum;
+			}
 			
-			// Move pointer to beginning of next number
-			pointer = indxSpc + 1;
-						
-			// Add integers
-			sum += even;
+			i++;
 			
 		}
 		
@@ -112,10 +103,10 @@ public class ch5_ex9 {
 		
 		// e. Output sum of squares of all odd numbers between firstNum and secondNum inclusive
 		
-		// Reset variables used in c
-		indxSpc = 0;
-		pointer = 0;
-		sum = 0;
+		int indxSpc = 0; // index of spaces between numbers in string
+		int pointer = 0; // beginning of substring
+		
+		sum = 0; // reset sum variable
 		
 		while (indxSpc < oddStr.length() - 1) {
 			
