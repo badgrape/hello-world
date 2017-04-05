@@ -1,6 +1,0 @@
-TicketCategory  TicketPrice     NumberOfTicketsSold  SubTotal 
-BOX             $250.00         5750                 $1437500.00 
-SIDELINE        $100.00         28000                $2800000.00 
-PREMIUM         $50.00          35750                $1787500.00 
-GENERAL         $25.00          18750                $468750.00 
-Totals                          88250                $6493750.00
